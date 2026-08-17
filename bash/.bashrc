@@ -120,6 +120,9 @@ export PATH="$HOME/go/bin:$PATH"
 # fallback go; mise shadows it inside projects
 [ -d /usr/local/go/bin ] && export PATH="$PATH:/usr/local/go/bin"
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Created by fzf install script (installed via github)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

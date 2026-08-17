@@ -12,6 +12,10 @@ id_ed25519*
 *.secret
 netrc
 .netrc
+rclone.conf
+hosts.yml
+.credentials.json
+credentials.json
 
 # Machine-local overrides, out of version control
 *.local

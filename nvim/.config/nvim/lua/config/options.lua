@@ -1,3 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+-- sonokai_float_style = "blend" gives floats the same (transparent) background
+-- as Normal, so they need a border to stay distinguishable from the buffer.
+vim.o.winborder = "rounded"

@@ -24,6 +24,7 @@
     nixfmt
 
     # build + cloud
+    go
     bazelisk
     awscli2
 

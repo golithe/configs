@@ -28,9 +28,3 @@ fi
 
 # Created by `pipx` on 2026-02-12 10:07:44
 . "$HOME/.cargo/env"
-
-# .bashrc is sourced at line 15, above, so its PATH entries land before the
-# ones this file adds afterwards. dedup_path (defined in .bashrc) collapses the
-# result to first occurrence; call it here so it runs after everything.
-command -v dedup_path >/dev/null && dedup_path
-export PATH

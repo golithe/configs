@@ -129,9 +129,6 @@ eval "$(fzf --bash)"
 export CLAUDE_CODE_EFFORT=high
 export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
 
-# runpodctl
-export PATH="$HOME/.local/bin:$PATH"
-
 # Aliases live in ~/.bash_aliases, sourced above.
 
 eval "$(direnv hook bash)"
@@ -139,3 +136,6 @@ eval "$(direnv hook bash)"
 
 # must come after the direnv hook
 eval "$(mise activate bash)"
+
+# keep only the first occurrence of each PATH entry
+PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)

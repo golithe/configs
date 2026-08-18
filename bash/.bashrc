@@ -123,8 +123,7 @@ export PATH="$HOME/go/bin:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
 
-# Created by fzf install script (installed via github)
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 # Temporary config for claude code
 export CLAUDE_CODE_EFFORT=high

@@ -1,0 +1,5 @@
+regolith.look.path: /usr/share/regolith-look/blackhole
+wm.window.border.size: 1
+wm.gaps.inner.size: 2
+wm.client.focused.color.child_border: #D98E32
+wm.client.focused.color.border: #D98E32

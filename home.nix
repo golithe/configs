@@ -14,6 +14,7 @@
     ripgrep
     fzf
     fd
+    stow
 
     # editor + git
     neovim

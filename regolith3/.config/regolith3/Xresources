@@ -1,4 +1,6 @@
 regolith.look.path: /usr/share/regolith-look/blackhole
+Xft.dpi: 120
+gnome.terminal.font: SauceCodePro Nerd Font Mono 11
 wm.window.border.size: 1
 wm.gaps.inner.size: 2
 wm.client.focused.color.child_border: #D98E32

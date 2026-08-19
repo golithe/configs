@@ -19,6 +19,8 @@ live at `~/working/configs`.
 CLI tools come from Nix + Home Manager (`home.nix`), not apt. Regolith and anything
 the graphical session needs stays on apt.
 
+Rust comes from rustup, not Nix; install it separately.
+
 Not tracked: `~/.gitconfig.local` (per-machine identity, pulled in by `.gitconfig`).
 
 ## New machine

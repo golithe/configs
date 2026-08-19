@@ -117,10 +117,6 @@ fi
 
 eval "$(fzf --bash)"
 
-# Temporary config for claude code
-export CLAUDE_CODE_EFFORT=high
-export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
-
 # Aliases live in ~/.bash_aliases, sourced above.
 
 eval "$(direnv hook bash)"

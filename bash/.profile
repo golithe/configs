@@ -47,3 +47,6 @@ fi
 
 export EDITOR=nvim
 export VISUAL=nvim
+
+export CLAUDE_CODE_EFFORT=high
+export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1

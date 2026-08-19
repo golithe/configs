@@ -30,8 +30,9 @@ if [ -d "$HOME/go/bin" ] ; then
     PATH="$HOME/go/bin:$PATH"
 fi
 
-# Created by `pipx` on 2026-02-12 10:07:44
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ] ; then
+    . "$HOME/.cargo/env"
+fi
 
 # last, so nix-provided tools win over ad-hoc installs
 if [ -d "$HOME/.nix-profile/bin" ] ; then

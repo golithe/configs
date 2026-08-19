@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     # shell
     btop
+    direnv
     ripgrep
     fzf
     fd

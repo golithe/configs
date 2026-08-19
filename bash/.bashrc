@@ -131,8 +131,5 @@ export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
 eval "$(direnv hook bash)"
 . "$HOME/.cargo/env"
 
-# must come after the direnv hook
-eval "$(mise activate bash)"
-
 # keep only the first occurrence of each PATH entry
 PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)

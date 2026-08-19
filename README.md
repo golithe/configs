@@ -10,9 +10,8 @@ top-level directory is a package laid out relative to `$HOME`, so
 | `bash`      | `.bashrc`, `.bash_aliases`, `.profile`                                                                        |
 | `regolith3` | Xresources for [Regolith 3](https://regolith-desktop.com/). Setup: [regolith3/README.md](regolith3/README.md) |
 
-CLI tools come from Nix + Home Manager (`home.nix`), not apt. `direnv` and `mise`
-stay on apt because `.bashrc` hooks them before Home Manager exists. Regolith and
-anything the graphical session needs stays on apt too.
+CLI tools come from Nix + Home Manager (`home.nix`), not apt. Regolith and anything
+the graphical session needs stays on apt.
 
 Not tracked: `.gitconfig` (identity differs per machine).
 
@@ -21,7 +20,6 @@ Not tracked: `.gitconfig` (identity differs per machine).
 Install [Nix](https://nixos.org/download/), then:
 
 ```bash
-sudo apt install direnv mise
 git clone https://github.com/golithe/configs.git ~/working/configs
 cd ~/working/configs
 home-manager switch --flake .#jwi

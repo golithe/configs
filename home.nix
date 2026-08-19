@@ -15,6 +15,7 @@ in
   home.file = {
     ".bashrc".source = link "bash/.bashrc";
     ".bash_aliases".source = link "bash/.bash_aliases";
+    ".gitconfig".source = link "git/.gitconfig";
     ".profile".source = link "bash/.profile";
     ".config/nvim".source = link "nvim/.config/nvim";
     ".config/regolith3/Xresources".source = link "regolith3/.config/regolith3/Xresources";

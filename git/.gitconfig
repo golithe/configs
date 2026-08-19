@@ -1,0 +1,14 @@
+[user]
+	name = Jan Winkler
+	email = jan@golithe.dev
+
+[core]
+	editor = nvim
+
+[init]
+	defaultBranch = main
+
+[includeIf "hasconfig:remote.*.url:*:DiraGeoSystems/**"]
+	path = ~/.gitconfig.local
+[includeIf "hasconfig:remote.*.url:*:ProSuite/**"]
+	path = ~/.gitconfig.local

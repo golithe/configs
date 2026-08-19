@@ -9,6 +9,7 @@ at `~/.config/nvim/init.lua`. The links themselves are declared in `home.nix`.
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `nvim`      | LazyVim config + `lazy-lock.json` plugin pins                                                                 |
 | `bash`      | `.bashrc`, `.bash_aliases`, `.profile`                                                                        |
+| `git`       | `.gitconfig`                                                                                                  |
 | `regolith3` | Xresources for [Regolith 3](https://regolith-desktop.com/). Setup: [regolith3/README.md](regolith3/README.md) |
 
 Links point at the working copy (`mkOutOfStoreSymlink`), not into `/nix/store`,
@@ -18,7 +19,7 @@ live at `~/working/configs`.
 CLI tools come from Nix + Home Manager (`home.nix`), not apt. Regolith and anything
 the graphical session needs stays on apt.
 
-Not tracked: `.gitconfig` (identity differs per machine).
+Not tracked: `~/.gitconfig.local` (per-machine identity, pulled in by `.gitconfig`).
 
 ## New machine
 

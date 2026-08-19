@@ -28,10 +28,19 @@ in
     ripgrep
     fzf
     fd
+    jq
 
     # editor + git
     neovim
     lazygit
+    git
+
+    # mason installs node-based language servers
+    nodejs
+
+    # python
+    uv
+    ruff
 
     # nix tooling
     statix
@@ -41,6 +50,7 @@ in
     go
     bazelisk
     awscli2
+    runpodctl
 
     # nixpkgs ships the launcher as `bazelisk` therefore an alias.
     (pkgs.runCommand "bazel-as-bazelisk" { } ''

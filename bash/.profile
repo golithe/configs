@@ -39,5 +39,11 @@ if [ -d "$HOME/.nix-profile/bin" ] ; then
     PATH="$HOME/.nix-profile/bin:$PATH"
 fi
 
+# home-manager routes these through environment.d, which only the graphical
+# session reads; source them here so ssh and tty logins get them too
+if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] ; then
+    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+
 export EDITOR=nvim
 export VISUAL=nvim

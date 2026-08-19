@@ -26,5 +26,17 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/go/bin" ] ; then
+    PATH="$HOME/go/bin:$PATH"
+fi
+
 # Created by `pipx` on 2026-02-12 10:07:44
 . "$HOME/.cargo/env"
+
+# last, so nix-provided tools win over ad-hoc installs
+if [ -d "$HOME/.nix-profile/bin" ] ; then
+    PATH="$HOME/.nix-profile/bin:$PATH"
+fi
+
+export EDITOR=nvim
+export VISUAL=nvim

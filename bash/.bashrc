@@ -115,11 +115,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$HOME/go/bin:$PATH"
-
-export EDITOR=nvim
-export VISUAL=nvim
-
 eval "$(fzf --bash)"
 
 # Temporary config for claude code
@@ -129,7 +124,3 @@ export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
 # Aliases live in ~/.bash_aliases, sourced above.
 
 eval "$(direnv hook bash)"
-. "$HOME/.cargo/env"
-
-# keep only the first occurrence of each PATH entry
-PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)

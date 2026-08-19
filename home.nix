@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+let
+  configs = "${config.home.homeDirectory}/working/configs";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${configs}/${path}";
+in
 {
   home = {
     username = "jwi";
@@ -6,6 +10,15 @@
     stateVersion = "26.05";
   };
   programs.home-manager.enable = true;
+
+  # out-of-store: files stay editable, nvim rewrites its own lock files
+  home.file = {
+    ".bashrc".source = link "bash/.bashrc";
+    ".bash_aliases".source = link "bash/.bash_aliases";
+    ".profile".source = link "bash/.profile";
+    ".config/nvim".source = link "nvim/.config/nvim";
+    ".config/regolith3/Xresources".source = link "regolith3/.config/regolith3/Xresources";
+  };
 
   # cli only, nothing that needs graphics (CUDA stays handled by popos)
   home.packages = with pkgs; [
@@ -15,7 +28,6 @@
     ripgrep
     fzf
     fd
-    stow
 
     # editor + git
     neovim

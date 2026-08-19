@@ -1,14 +1,19 @@
 # configs
 
-Dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/). Each
-top-level directory is a package laid out relative to `$HOME`, so
-`nvim/.config/nvim/init.lua` lands at `~/.config/nvim/init.lua`.
+Dotfiles and CLI tooling, managed with
+[Home Manager](https://nix-community.github.io/home-manager/). Each top-level
+directory is laid out relative to `$HOME`, so `nvim/.config/nvim/init.lua` lands
+at `~/.config/nvim/init.lua`. The links themselves are declared in `home.nix`.
 
-| Package     | Contents                                                                                                    |
+| Directory   | Contents                                                                                                    |
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `nvim`      | LazyVim config + `lazy-lock.json` plugin pins                                                                 |
 | `bash`      | `.bashrc`, `.bash_aliases`, `.profile`                                                                        |
 | `regolith3` | Xresources for [Regolith 3](https://regolith-desktop.com/). Setup: [regolith3/README.md](regolith3/README.md) |
+
+Links point at the working copy (`mkOutOfStoreSymlink`), not into `/nix/store`,
+so files stay editable and nvim can rewrite its own lock files. The repo has to
+live at `~/working/configs`.
 
 CLI tools come from Nix + Home Manager (`home.nix`), not apt. Regolith and anything
 the graphical session needs stays on apt.
@@ -23,13 +28,10 @@ Install [Nix](https://nixos.org/download/), then:
 git clone https://github.com/golithe/configs.git ~/working/configs
 cd ~/working/configs
 home-manager switch --flake .#jwi
-stow -t ~ */
 ```
 
-Home Manager comes first because it installs stow.
+Home Manager refuses to overwrite files it does not own, so move the originals
+aside first. Ubuntu ships its own `~/.bashrc` and `~/.profile`.
 
-`-t ~` is required: stow otherwise targets the parent dir, `~/working`. Stow won't
-clobber existing real files, so move the originals aside first. Ubuntu ships its
-own `~/.bashrc` and `~/.profile`.
-
-Undo with `stow -D -t ~ <package>`.
+Roll back the last switch with `home-manager switch --rollback`; list what is
+available with `home-manager generations`.

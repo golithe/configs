@@ -30,8 +30,12 @@ Install [Nix](https://nixos.org/download/), then:
 ```bash
 git clone https://github.com/golithe/configs.git ~/working/configs
 cd ~/working/configs
-home-manager switch --flake .#jwi
+home-manager switch --flake .#jwi --impure      # Linux
+home-manager switch --flake .#jwi-mac --impure  # macOS
 ```
+
+`--impure` is required: `home.nix` reads `$USER`/`$HOME` from the environment
+instead of hardcoding them, so the repo never names the machine owner.
 
 Home Manager refuses to overwrite files it does not own, so move the originals
 aside first. Ubuntu ships its own `~/.bashrc` and `~/.profile`.

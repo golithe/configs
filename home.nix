@@ -1,12 +1,19 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
+  isDarwin = pkgs.stdenv.isDarwin;
+  envUser = builtins.getEnv "USER";
+  envHome = builtins.getEnv "HOME";
+  requireImpure = name: value:
+    if value == "" then
+      throw ("home.nix: $" + name + " is empty - run home-manager with --impure")
+    else value;
   configs = "${config.home.homeDirectory}/working/configs";
   link = path: config.lib.file.mkOutOfStoreSymlink "${configs}/${path}";
 in
 {
   home = {
-    username = "jwi";
-    homeDirectory = "/home/jwi";
+    username = requireImpure "USER" envUser;
+    homeDirectory = requireImpure "HOME" envHome;
     stateVersion = "26.05";
   };
   programs.home-manager.enable = true;
@@ -18,6 +25,8 @@ in
     ".gitconfig".source = link "git/.gitconfig";
     ".profile".source = link "bash/.profile";
     ".config/nvim".source = link "nvim/.config/nvim";
+  } // lib.optionalAttrs (!isDarwin) {
+    # Regolith 3 is Linux-only
     ".config/regolith3/Xresources".source = link "regolith3/.config/regolith3/Xresources";
   };
 

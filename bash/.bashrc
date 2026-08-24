@@ -120,3 +120,6 @@ eval "$(fzf --bash)"
 # Aliases live in ~/.bash_aliases, sourced above.
 
 eval "$(direnv hook bash)"
+
+# opencode
+export PATH=/home/jwi/.opencode/bin:$PATH

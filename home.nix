@@ -67,6 +67,10 @@ in
     statix
     nixfmt
 
+    # terminal font: LazyVim uses Nerd Fonts v3 codepoints, and anything the
+    # font lacks falls through to AR PL UMing, which renders them as Han glyphs
+    nerd-fonts.jetbrains-mono
+
     # build + cloud
     go
     awscli2

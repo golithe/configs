@@ -69,13 +69,17 @@ in
 
     # build + cloud
     go
-    bazelisk
     awscli2
     runpodctl
 
     # nixpkgs ships the launcher as `bazelisk` therefore an alias.
-    (pkgs.runCommand "bazel-as-bazelisk" { } ''
+    # Linked by hand rather than installing pkgs.bazelisk: that package also
+    # ships a `sha256sum` which shadows coreutils' on PATH and prints the hash
+    # without the filename column, breaking `sha256sum -c` and any parser that
+    # splits on whitespace (e.g. blink.cmp's pre-built binary check).
+    (pkgs.runCommand "bazelisk-no-sha256sum" { } ''
       mkdir -p $out/bin
+      ln -s ${pkgs.bazelisk}/bin/bazelisk $out/bin/bazelisk
       ln -s ${pkgs.bazelisk}/bin/bazelisk $out/bin/bazel
     '')
   ];

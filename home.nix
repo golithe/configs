@@ -28,6 +28,12 @@ in
   # sole source for display scale: gsd-xsettings overwrites Xft.dpi with 96 * this
   dconf.settings = lib.mkIf (!isDarwin) {
     "org/gnome/desktop/interface".text-scaling-factor = lib.hm.gvariant.mkDouble 1.25;
+    # compose over a second layout: i3 binds against layout group 1 only
+    # (regolith3/README.md). RAlt was a duplicate Alt_L, nothing else uses it.
+    "org/gnome/desktop/input-sources".xkb-options = [
+      "caps:none"
+      "compose:ralt"
+    ];
   };
 
   # out-of-store: files stay editable, nvim rewrites its own lock files
@@ -48,6 +54,8 @@ in
     # regolith portal backend has no appearance/color-scheme, gtk's does
     ".config/xdg-desktop-portal/regolith-portals.conf".source =
       link "regolith3/.config/xdg-desktop-portal/regolith-portals.conf";
+    # ibus-engine-simple loads this once at its own startup: `ibus restart` after editing
+    ".XCompose".source = link "x11/.XCompose";
   };
 
   # cli only, nothing that needs graphics (CUDA stays handled by popos)

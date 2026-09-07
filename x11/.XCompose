@@ -1,0 +1,12 @@
+# Single-letter sequences, so RAlt+a is ä. They shadow every system sequence
+# starting with that letter: ae/oe (ligatures), oo (deg), oc (copy), so (sect).
+# %L is the system table; later definitions win, so these override it.
+include "%L"
+
+<Multi_key> <a> : "ä"
+<Multi_key> <o> : "ö"
+<Multi_key> <u> : "ü"
+<Multi_key> <A> : "Ä"
+<Multi_key> <O> : "Ö"
+<Multi_key> <U> : "Ü"
+<Multi_key> <s> : "ß"

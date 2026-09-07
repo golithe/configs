@@ -25,6 +25,11 @@ in
   };
   programs.home-manager.enable = true;
 
+  # sole source for display scale: gsd-xsettings overwrites Xft.dpi with 96 * this
+  dconf.settings = lib.mkIf (!isDarwin) {
+    "org/gnome/desktop/interface".text-scaling-factor = lib.hm.gvariant.mkDouble 1.25;
+  };
+
   # out-of-store: files stay editable, nvim rewrites its own lock files
   home.file = {
     ".bashrc".source = link "bash/.bashrc";
@@ -39,6 +44,10 @@ in
   // lib.optionalAttrs (!isDarwin) {
     # Regolith 3 is Linux-only
     ".config/regolith3/Xresources".source = link "regolith3/.config/regolith3/Xresources";
+    ".config/regolith3/i3/config.d".source = link "regolith3/.config/regolith3/i3/config.d";
+    # regolith portal backend has no appearance/color-scheme, gtk's does
+    ".config/xdg-desktop-portal/regolith-portals.conf".source =
+      link "regolith3/.config/xdg-desktop-portal/regolith-portals.conf";
   };
 
   # cli only, nothing that needs graphics (CUDA stays handled by popos)

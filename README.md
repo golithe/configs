@@ -10,7 +10,7 @@ at `~/.config/nvim/init.lua`. The links themselves are declared in `home.nix`.
 | `nvim`      | LazyVim config + `lazy-lock.json` plugin pins                                                                 |
 | `bash`      | `.bashrc`, `.bash_aliases`, `.profile`                                                                        |
 | `git`       | `.gitconfig`                                                                                                  |
-| `regolith3` | Xresources for [Regolith 3](https://regolith-desktop.com/). Setup: [regolith3/README.md](regolith3/README.md) |
+| `regolith3` | Xresources and session fixes for [Regolith 3](https://regolith-desktop.com/). Setup: [regolith3/README.md](regolith3/README.md) |
 
 Links point at the working copy (`mkOutOfStoreSymlink`), not into `/nix/store`,
 so files stay editable and nvim can rewrite its own lock files. The repo has to

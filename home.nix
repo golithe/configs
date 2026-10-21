@@ -92,6 +92,7 @@ in
     go
     awscli2
     runpodctl
+    openstackclient-full
 
     # nixpkgs ships the launcher as `bazelisk` therefore an alias.
     # Linked by hand rather than installing pkgs.bazelisk: that package also

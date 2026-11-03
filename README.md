@@ -22,6 +22,16 @@ the graphical session needs stays on apt.
 
 Rust comes from rustup, not Nix; install it separately.
 
+uv comes from Astral's installer, not Nix: projects pin it exactly with
+`required-version` in `pyproject.toml`, and nixpkgs lags behind those pins.
+Install it once, without letting the installer edit the linked shell files:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
+```
+
+When a project reports `Required uv version ==X`, run `uv self update X`.
+
 Not tracked: `~/.gitconfig.local` (per-machine identity, pulled in by `.gitconfig`).
 
 ## New machine

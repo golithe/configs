@@ -76,8 +76,7 @@ in
     # mason installs node-based language servers
     nodejs
 
-    # python
-    uv
+    # python; uv is not here: projects pin it exactly (README)
     ruff
 
     # nix tooling

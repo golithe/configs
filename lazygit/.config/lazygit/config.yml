@@ -1,0 +1,12 @@
+customCommands:
+  - key: "<c-g>"
+    context: "localBranches"
+    description: "Push and create a PR against the branch below it"
+    loadingText: "Creating PR..."
+    output: log
+    # The base is the branch at the commit below, so the PR holds one commit and GitHub
+    # titles it from the commit message instead of the branch name.
+    command: >-
+      base=$(git branch --points-at '{{.SelectedLocalBranch.Name}}~1' --format='%(refname:short)' | head -n1);
+      git push -u origin '{{.SelectedLocalBranch.Name}}' &&
+      gh pr create --fill --head '{{.SelectedLocalBranch.Name}}' --base "${base:-main}"
